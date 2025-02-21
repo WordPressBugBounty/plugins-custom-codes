@@ -202,7 +202,7 @@ function codes_save_data(  $post_ID = false, $post = false  ) {
         $file_directory = CODES_FOLDER_DIR . $editor_file_name;
         $editor_content = ( isset( $_POST["editor-{$editor_id}"] ) ? $_POST["editor-{$editor_id}"] : null );
         // phpcs:ignore
-        $editor_value = codes_normalize_line_endings( stripslashes( $editor_content ) );
+        $editor_value = codes_normalize_line_endings( stripslashes( $editor_content ?? '' ) );
         if ( isset( $editor_content ) && !empty( $editor_content ) ) {
             // Pure editor save (JS, HTML, PHP, and all other langs).
             // Try fixing permission.
@@ -210,7 +210,7 @@ function codes_save_data(  $post_ID = false, $post = false  ) {
                 $wp_filesystem->chmod( $file_directory, 0644 );
             }
             // WRITE: Pure editor content save.
-            $data_written = $wp_filesystem->put_contents( $file_directory, $editor_value, FILE_TEXT );
+            $data_written = $wp_filesystem->put_contents( $file_directory, $editor_value );
             if ( false === $data_written ) {
                 $errors[$editor_file_name] = __( 'Could not be written to the file.', 'custom-codes' );
             } else {
@@ -262,7 +262,7 @@ function codes_save_data(  $post_ID = false, $post = false  ) {
                         $wp_filesystem->chmod( $file_directory, 0644 );
                     }
                     // WRITE: Save the compileable file first.
-                    $data_written = $wp_filesystem->put_contents( $file_directory, $compile_result['compiled'], FILE_TEXT );
+                    $data_written = $wp_filesystem->put_contents( $file_directory, $compile_result['compiled'] );
                     if ( false === $data_written ) {
                         $errors[$compileable_file_name] = __( 'Compiled output could not be written to the file.', 'custom-codes' );
                     }
@@ -306,7 +306,7 @@ function codes_save_data(  $post_ID = false, $post = false  ) {
             $wp_filesystem->chmod( $file_directory, 0644 );
         }
         // WRITE: Save the compileable file first.
-        $data_written = $wp_filesystem->put_contents( $file_directory, $compileable, FILE_TEXT );
+        $data_written = $wp_filesystem->put_contents( $file_directory, $compileable );
         if ( false === $data_written ) {
             $errors[$compileable_file_name] = __( 'Output could not be written to the file.', 'custom-codes' );
         }
@@ -330,7 +330,7 @@ function codes_save_data(  $post_ID = false, $post = false  ) {
                     $wp_filesystem->chmod( $file_directory, 0644 );
                 }
                 // WRITE: Save the compileable file first.
-                $data_written = $wp_filesystem->put_contents( $file_directory, $compile_result['compiled'], FILE_TEXT );
+                $data_written = $wp_filesystem->put_contents( $file_directory, $compile_result['compiled'] );
                 if ( false === $data_written ) {
                     $errors[$editor_id] = __( 'Compiled output could not be written to the file.', 'custom-codes' );
                 }

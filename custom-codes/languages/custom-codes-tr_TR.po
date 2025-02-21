@@ -1,12 +1,12 @@
-# Copyright (C) 2020 PressX
-# This file is distributed under the same license as the PressX - Custom Codes plugin.
+# Copyright (C) 2025 Bilal Tas
+# This file is distributed under the same license as the Bilal Tas - Custom Codes plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: PressX - Custom Codes 2.0\n"
+"Project-Id-Version: Bilal Tas - Custom Codes 2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/custom-codes\n"
 "POT-Creation-Date: 2022-11-08T19:02:47+00:00\n"
 "PO-Revision-Date: 2022-11-08 22:04+0300\n"
-"Last-Translator: Bilal Tas <bilal@pressx.co>\n"
+"Last-Translator: Bilal Tas <bilaltas@me.com>\n"
 "Language-Team: \n"
 "Language: tr_TR\n"
 "MIME-Version: 1.0\n"
@@ -29,8 +29,8 @@ msgid "Your custom SASS, CSS, JS and PHP customizations in same directory."
 msgstr "Özel SASS, CSS, JS ve PHP özelleştirmeleriniz aynı dizinde."
 
 #. Author of the plugin
-msgid "PressX"
-msgstr "PressX"
+msgid "Bilal Tas"
+msgstr "Bilal Taş"
 
 #. Author URI of the plugin
 msgid "https://www.codekitwp.com"
@@ -1063,8 +1063,8 @@ msgstr "Değişiklikleri Kaydet"
 #~ msgid "Language"
 #~ msgstr "Dil"
 
-#~ msgid "https://pressx.co"
-#~ msgstr "https://pressx.co"
+#~ msgid "https://www.bilaltas.net"
+#~ msgstr "https://www.bilaltas.net"
 
 #~ msgid "Custom Codes Settings"
 #~ msgstr "Custom Codes Ayarları"

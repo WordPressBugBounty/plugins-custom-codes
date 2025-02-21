@@ -4,7 +4,7 @@ Tags: custom, codes, custom codes, custom css, development, developer, scss, sas
 Requires at least: 4.9.8
 Donate link: https://www.codekitwp.com/
 Requires PHP: 5.6
-Tested up to: 6.5
+Tested up to: 6.7
 Stable tag: trunk
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -142,6 +142,11 @@ Simply install CodeKit and click the *Upgrade >* button where you can learn more
 7. Plugin settings
 
 == Changelog ==
+= 2.3.9 (2025-02-21 05:58 EET) =
+* Minor fixes
+* Vendor packages updated
+* Tested on WordPress 6.7
+
 = 2.3.8 (2024-05-06 18:17 EET) =
 * Minor fixes
 * Vendor packages updated

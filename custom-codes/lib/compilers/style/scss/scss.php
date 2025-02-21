@@ -23,7 +23,7 @@ function codes_compile_scss( $compileable_content ) {
 	);
 
 	// Call Composer.
-	require_once __DIR__ . '/vendor/autoload.php';
+	require_once CODES_PLUGIN_DIR . '/vendor/autoload.php';
 
 	try {
 
@@ -40,7 +40,7 @@ function codes_compile_scss( $compileable_content ) {
 			)
 		);
 
-		$compiled    = $scss->compile( $compileable_content );
+		$compiled    = $scss->compileString( $compileable_content )->getCss();
 		$compilation = array(
 			'status'   => 'success',
 			'compiled' => $compiled,

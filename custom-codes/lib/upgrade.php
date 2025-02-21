@@ -148,7 +148,7 @@ function codes_create_mixin_posts( $new_version, $old_version ) {
 				$editor_content = $wp_filesystem->get_contents( $post_file_path );
 				$editor_content = '/* ' . __( 'Import Mixins', 'custom-codes' ) . " */\n@import \"$mixin_id-scss-desktop\"; \n\n$editor_content";
 
-				$wp_filesystem->put_contents( $post_file_path, $editor_content, FILE_TEXT );
+				$wp_filesystem->put_contents( $post_file_path, $editor_content );
 
 			}
 		}
@@ -288,7 +288,7 @@ function codes_import_old_styles( $type = 'Public', $mixin_id = false ) {
 				if ( is_numeric( $mixin_id ) && file_exists( $mixin_file ) ) {
 
 					$new_file_content = '/* ' . __( 'Import Mixins', 'custom-codes' ) . " */\n@import \"$mixin_filename\"; \n\n$new_file_content";
-					$wp_filesystem->put_contents( $new_file_scss, $new_file_content, FILE_TEXT );
+					$wp_filesystem->put_contents( $new_file_scss, $new_file_content );
 
 				}
 			}
