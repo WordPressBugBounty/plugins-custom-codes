@@ -1,6 +1,6 @@
 === CodeKit - Custom Codes Editor  ===
 Contributors: bilaltas, atakanoz
-Tags: custom, codes, custom codes, custom css, development, developer, scss, sass, css, js, html, php, responsivity, mobile, emmet, autoprefixer, ga code, gtm code, tag manger code, analytics code, codekit
+Tags: custom css, custom scss, custom functions, sass, codekit
 Requires at least: 4.9.8
 Donate link: https://www.codekitwp.com/
 Requires PHP: 5.6
@@ -142,6 +142,9 @@ Simply install CodeKit and click the *Upgrade >* button where you can learn more
 7. Plugin settings
 
 == Changelog ==
+= 2.3.91 (2025-03-24 22:35 EET) =
+* PHP support for < 8.x on SCSS compilation
+
 = 2.3.9 (2025-02-21 05:58 EET) =
 * Minor fixes
 * Vendor packages updated
