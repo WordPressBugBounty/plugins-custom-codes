@@ -260,7 +260,7 @@ foreach ( $codes_posts as $code_post ) {
         $editor_file_name = "{$editor_name}.{$language_group_extension}";
         $editor_location = str_replace( $language_extension . '-', '', $editor_id );
         $file_directory = CODES_FOLDER_DIR . $editor_file_name;
-        if ( file_exists( $file_directory ) && 'default' === $editor_location && !defined( 'DOING_AJAX' ) ) {
+        if ( file_exists( $file_directory ) && 'default' === $editor_location ) {
             if ( 'frontend' === $location && !is_admin() || 'backend' === $location && is_admin() && empty( $restrict_roles ) || 'login' === $location && codes_is_login_page() || 'everywhere' === $location ) {
                 try {
                     require $file_directory;
@@ -273,7 +273,7 @@ foreach ( $codes_posts as $code_post ) {
                 // Or, run it in an action.
                 add_action( 'wp', function () use(
                     $file_directory,
-                    $wp_filesystem,
+                    $editor_name,
                     $code_post_id,
                     $location
                 ) {

@@ -4,7 +4,7 @@ Tags: custom css, custom scss, custom functions, sass, codekit
 Requires at least: 4.9.8
 Donate link: https://www.codekitwp.com/
 Requires PHP: 5.6
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: trunk
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -142,6 +142,12 @@ Simply install CodeKit and click the *Upgrade >* button where you can learn more
 7. Plugin settings
 
 == Changelog ==
+= 2.3.92 (2025-08-30 21:30 EET) =
+* DOING_AJAX check removed on PHP code releaser to be able to add hooks for AJAX requests (Thanks to @yoancutillas)
+* Unused variable call removed from the code releaser and added the missing one (Thanks to @yoancutillas)
+* Freemius SDK updated
+* Tested on WordPress 6.8
+
 = 2.3.91 (2025-03-24 22:35 EET) =
 * PHP support for < 8.x on SCSS compilation
 
