@@ -4,7 +4,7 @@ Tags: custom css, custom scss, custom functions, sass, codekit
 Requires at least: 4.9.8
 Donate link: https://www.codekitwp.com/
 Requires PHP: 5.6
-Tested up to: 6.8
+Tested up to: 6.9
 Stable tag: trunk
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -142,6 +142,11 @@ Simply install CodeKit and click the *Upgrade >* button where you can learn more
 7. Plugin settings
 
 == Changelog ==
+= 2.3.93 (2025-12-16 18:23 EET) =
+* Fixed: Attachment post type was not added to the locations list
+* Freemius SDK updated
+* Tested on WordPress 6.9
+
 = 2.3.92 (2025-08-30 21:30 EET) =
 * DOING_AJAX check removed on PHP code releaser to be able to add hooks for AJAX requests (Thanks to @yoancutillas)
 * Unused variable call removed from the code releaser and added the missing one (Thanks to @yoancutillas)
