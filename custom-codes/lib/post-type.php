@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * Codes post type actions.
  *
  * @since   2.0.0
@@ -20,7 +19,7 @@ function codes_register_post_type() {
 		'singular_name' => __( 'Code', 'custom-codes' ),
 		'all_items'     => __( 'Custom Codes', 'custom-codes' ),
 		'edit_item'     => __( 'Edit Code', 'custom-codes' ),
-		'add_new'  	    => __( 'Add New Code', 'custom-codes' ),
+		'add_new'       => __( 'Add New Code', 'custom-codes' ),
 		'add_new_item'  => __( 'Add New Code', 'custom-codes' ),
 		'not_found'     => __( 'No code added yet.', 'custom-codes' ),
 		'search_items'  => __( 'Search Codes', 'custom-codes' ),
@@ -59,7 +58,7 @@ add_action( 'init', 'codes_register_post_type' );
  * Disable block editor.
  *
  * @param bool   $current_status Returns current block editor status.
- * @param string $post_type Returns the post type.
+ * @param string $post_type      Returns the post type.
  */
 function codes_disable_gutenberg( $current_status, $post_type ) {
 
@@ -68,7 +67,6 @@ function codes_disable_gutenberg( $current_status, $post_type ) {
 	}
 
 	return $current_status;
-
 }
 add_filter( 'use_block_editor_for_post_type', 'codes_disable_gutenberg', 10, 2 );
 
@@ -89,9 +87,8 @@ function codes_delete_codes( $post_ID ) {
 
 	// Find the post editors and delete.
 	foreach ( glob( CODES_FOLDER_DIR . "$post_ID-*.*" ) as $file ) {
-		unlink( $file );
+		wp_delete_file( $file );
 	}
-
 }
 add_action( 'before_delete_post', 'codes_delete_codes' );
 

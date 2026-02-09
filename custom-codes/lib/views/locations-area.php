@@ -1,7 +1,6 @@
 <?php
 
 /**
- *
  * The "Location" metabox area. (Vue JS)
  *
  * @since   2.0.0
@@ -58,7 +57,7 @@ function codes_location_box_html(  $post  ) {
     ?><span class="codes-pro-link" v-if="!isPremium"> (<a href="<?php 
     echo esc_url( codes_fs()->get_upgrade_url() );
     ?>" target="_blank">PRO</a>)</span></label>
-		<?php 
+	<?php 
     ?>
 
 		<label :disabled="!isPremium"><input type="radio" name="location" v-model="location" value="post" :disabled="!isPremium"> <?php 
@@ -68,7 +67,7 @@ function codes_location_box_html(  $post  ) {
     ?><span class="codes-pro-link" v-if="!isPremium"> (<a href="<?php 
     echo esc_url( codes_fs()->get_upgrade_url() );
     ?>" target="_blank">PRO</a>)</span></label>
-		<?php 
+	<?php 
     ?>
 
 		<label :disabled="!isPremium"><input type="radio" name="location" v-model="location" value="post_type" :disabled="!isPremium"> <?php 
@@ -78,7 +77,7 @@ function codes_location_box_html(  $post  ) {
     ?><span class="codes-pro-link" v-if="!isPremium"> (<a href="<?php 
     echo esc_url( codes_fs()->get_upgrade_url() );
     ?>" target="_blank">PRO</a>)</span></label>
-		<?php 
+	<?php 
     ?>
 
 		<label :disabled="!isPremium"><input type="radio" name="location" v-model="location" value="term" :disabled="!isPremium"> <?php 
@@ -88,7 +87,7 @@ function codes_location_box_html(  $post  ) {
     ?><span class="codes-pro-link" v-if="!isPremium"> (<a href="<?php 
     echo esc_url( codes_fs()->get_upgrade_url() );
     ?>" target="_blank">PRO</a>)</span></label>
-		<?php 
+	<?php 
     ?>
 
 		<label :disabled="!isPremium"><input type="radio" name="location" v-model="location" value="taxonomy" :disabled="!isPremium"> <?php 
@@ -98,7 +97,7 @@ function codes_location_box_html(  $post  ) {
     ?><span class="codes-pro-link" v-if="!isPremium"> (<a href="<?php 
     echo esc_url( codes_fs()->get_upgrade_url() );
     ?>" target="_blank">PRO</a>)</span></label>
-		<?php 
+	<?php 
     ?>
 
 		<label :disabled="!isPremium"><input type="radio" name="location" v-model="location" value="template" :disabled="!isPremium"> <?php 
@@ -108,14 +107,14 @@ function codes_location_box_html(  $post  ) {
     ?><span class="codes-pro-link" v-if="!isPremium"> (<a href="<?php 
     echo esc_url( codes_fs()->get_upgrade_url() );
     ?>" target="_blank">PRO</a>)</span></label>
-		<?php 
+	<?php 
     ?>
 
 
 		<label><input type="radio" name="location" v-model="location" value="backend"> <?php 
     echo wp_kses( $wp_filesystem->get_contents( CODES_PLUGIN_DIR . '/assets/image/icon-wordpress.svg' ), codes_svg_args() );
     ?> <?php 
-    esc_html_e( 'Backend', 'custom-codes' );
+    esc_html_e( 'Admin Area', 'custom-codes' );
     ?></label>
 		<div v-if="location == 'backend'">
 			<b style="display: block; margin-top: 10px;"><i><?php 

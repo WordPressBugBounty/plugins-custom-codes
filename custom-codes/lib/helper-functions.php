@@ -1,7 +1,6 @@
 <?php
 
 /**
- *
  * Helper functions.
  *
  * @since   2.0.0
@@ -108,7 +107,7 @@ function codes_is_readable(  $dir  ) {
  * @param string $dir Directory path.
  */
 function codes_is_writable(  $dir  ) {
-    if ( is_dir( $dir ) && codes_chmod_check( $dir ) < 600 || (!is_writable( $dir ) || codes_chmod_check( $dir ) < 600 || !codes_is_readable( $dir )) ) {
+    if ( is_dir( $dir ) && codes_chmod_check( $dir ) < 600 || (!wp_is_writable( $dir ) || codes_chmod_check( $dir ) < 600 || !codes_is_readable( $dir )) ) {
         return false;
     }
     return true;
@@ -198,44 +197,38 @@ function codes_svg_args() {
 /**
  * Normalize line endings.
  *
- * @param string $string Text.
+ * @param string $text Text.
  */
-function codes_normalize_line_endings(  $string  ) {
+function codes_normalize_line_endings(  $text  ) {
     // Convert all line-endings to UNIX format.
-    $string = str_replace( array("\r\n", "\r", "\n"), "\n", $string );
-    return $string;
+    $text = str_replace( array("\r\n", "\r", "\n"), "\n", $text );
+    return $text;
 }
 
 /**
  * Recursive sanization for an array.
  *
- * @param array $array Array to sanitize.
+ * @param array $arr Array to sanitize.
  */
-function codes_recursive_sanitize_text_field(  $array  ) {
-    foreach ( $array as $key => &$value ) {
+function codes_recursive_sanitize_text_field(  $arr  ) {
+    foreach ( $arr as $key => &$value ) {
         if ( is_array( $value ) ) {
             $value = codes_recursive_sanitize_text_field( $value );
         } else {
             $value = sanitize_text_field( $value );
         }
     }
-    return $array;
+    return $arr;
 }
 
 /**
  * File import string by language.
  *
- * @param string $file_path File path that will be imported.
- * @param string $lang Language extension.
+ * @param string $file_path    File path that will be imported.
+ * @param string $lang         Language extension.
  * @param string $file_content Editor file content. This is needed on STYLUS, JS, HTML.
- * @param string $file_lang Included file language.
  */
-function codes_import_string(
-    $file_path,
-    $lang,
-    $file_content = null,
-    $file_lang = null
-) {
+function codes_import_string(  $file_path, $lang, $file_content = null  ) {
     if ( 'css' === $lang ) {
         if ( !empty( $file_content ) ) {
             // Known issue.

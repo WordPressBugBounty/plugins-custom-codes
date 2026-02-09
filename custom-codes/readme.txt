@@ -1,18 +1,18 @@
 === CodeKit - Custom Codes Editor  ===
 Contributors: bilaltas, atakanoz
-Tags: custom css, custom scss, custom functions, sass, codekit
+Tags: custom css, custom scss, custom functions, ai, codekit
 Requires at least: 4.9.8
 Donate link: https://www.codekitwp.com/
-Requires PHP: 5.6
-Tested up to: 6.9
+Requires PHP: 7.0
+Tested up to: 7.0
 Stable tag: trunk
 License: MIT
-License URI: https://opensource.org/licenses/MIT
+License URI: https://opensource.org/license/MIT
 
 Your custom SASS, CSS, JS, PHP and HTML customizations in same directory.
 
 == Description ==
-Add custom **SASS, CSS, JS, PHP and HTML** codes to your WordPress websites with the most advanced, yet simple custom code editor ever. Changing the look of your website and adding new functions have never been easier.
+Add custom **SASS, CSS, JS, PHP and HTML** codes to your WordPress websites with the most advanced, yet simple custom code editor ever. **Now with AI superpowers!** Generate, fix, and optimize your code with Google Gemini or OpenAI. Changing the look of your website and adding new functions have never been easier.
 
 By using CodeKit plugin, you can **create code blocks for different languages** and maintain them in separate blocks just like you do with your posts. With the power of our integrated IDE, you can add codes with syntax highlighting, emmet feature and autocomplete. The features also provide continuous development and urgent deployment of **codes without effort.** It is actually just like your favorite code editor.
 
@@ -22,6 +22,7 @@ CodeKit is one of the most versatile and functional custom codes plugin in the m
 
 If you want to:
 
+* **Generate, fix, and optimize** your custom codes with AI
 * Add **Google Analytics (GA)** code to your website
 * Add **Google Tag Manager (GTM)** code to your website
 * Add **custom JavaScript** codes to your website
@@ -36,6 +37,12 @@ Then, CodeKit is just what you need. Install in a few minutes, develop and deplo
 
 == Robust Code Editor ==
 CodeKit is intended for novice as well as professional users, and it allows you to add simple code blocks alongside helping you with development or deployment in case of an urgency.
+
+== AI Features ==
+* **Code Generation**: Ask AI to write code for you.
+* **Code Fix**: Let AI fix your syntax errors or bugs.
+* **Code Optimization**: Optimize your code for better performance.
+* **Supports Google Gemini & OpenAI**: Use your own API keys.
 
 == LANGUAGE BASED FEATURES: ==
 
@@ -84,15 +91,15 @@ CodeKit is intended for novice as well as professional users, and it allows you 
 Do you want to expand your coding capabilities through a plugin on WordPress? Pro version of Custom Code is *now* available which perfectly satisfies any level of users and developers.
 
 == Pro Features
-* LESS Editor
-* Stylus Editor
-* CoffeeScript Editor
-* PUG Editor
-* Editor Code Folding
-* Editor Code Hints
-* Custom Code Groups/Categories
-* Custom Code Includes
+* AI Code Generation, Fix & Optimization
 * Advanced Code Release Locations
+* Editor Code Folding
+* Custom Code Includes
+* Custom Code Groups/Categories
+* Editor Code Hints
+* More language support (LESS, Stylus, CoffeeScript, PUG, and more)
+* Priority Support
+* And, much more PRO features coming soon...
 
 Simply install CodeKit and click the *Upgrade >* button where you can learn more about the latest Pro features and grab your license!
 
@@ -142,6 +149,13 @@ Simply install CodeKit and click the *Upgrade >* button where you can learn more
 7. Plugin settings
 
 == Changelog ==
+= 2.5.0 (2026-02-09 15:44 EET) =
+* Added: AI features for code generation, fix & optimization
+* Updated: VueJS updated to 2.7.16
+* Tested on WordPress 7.0-alpha
+* General improvements, optimizations, and bug fixes
+* Vendor packages updated
+
 = 2.3.93 (2025-12-16 18:23 EET) =
 * Fixed: Attachment post type was not added to the locations list
 * Freemius SDK updated

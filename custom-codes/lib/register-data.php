@@ -1,7 +1,6 @@
 <?php
 
 /**
- *
  * Register saveable data.
  *
  * @since   2.0.0

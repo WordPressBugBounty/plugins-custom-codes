@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * Upgrade actions
  *
  * @since   2.0.0
@@ -24,7 +23,6 @@ function codes_upgrade() {
 	// Check an old setting to see a new installation.
 	do_action( 'codes_upgrade', $new_version, $old_version );
 	update_option( '_codes_version', $new_version );
-
 }
 add_action( 'setup_theme', 'codes_upgrade' );
 
@@ -63,7 +61,7 @@ function codes_move_multisite_codes( $new_version, $old_version ) {
 
 			// Early exit if posts are not ready.
 			if ( ! is_array( $codes ) ) {
-				continue;
+					continue;
 			}
 
 			// Process all the codes.
@@ -153,7 +151,6 @@ function codes_create_mixin_posts( $new_version, $old_version ) {
 			}
 		}
 	} // Old mixins loop
-
 }
 add_action( 'codes_upgrade', 'codes_create_mixin_posts', 12, 2 );
 
@@ -209,13 +206,12 @@ function codes_import_old_mixins( $type = 'Public' ) {
 	}
 
 	return 'Error';
-
 }
 
 /**
  * Import old styles.
  *
- * @param string $type Admin or Public files.
+ * @param string $type     Admin or Public files.
  * @param int    $mixin_id Mixin ID.
  */
 function codes_import_old_styles( $type = 'Public', $mixin_id = false ) {
@@ -243,7 +239,7 @@ function codes_import_old_styles( $type = 'Public', $mixin_id = false ) {
 	$post_ID = wp_insert_post(
 		array(
 			'post_title'  => sprintf(
-				/* translators: 1: Admin or Public 2: Language selected */
+					/* translators: 1: Admin or Public 2: Language selected */
 				__( '%1$s Side %2$s', 'custom-codes' ),
 				$type_label,
 				strtoupper( $style_lang )
@@ -301,7 +297,6 @@ function codes_import_old_styles( $type = 'Public', $mixin_id = false ) {
 			}
 		}
 	}
-
 }
 
 /**
@@ -313,8 +308,7 @@ function codes_import_old_scripts( $type = 'Public' ) {
 	global $wp_filesystem;
 
 	// Exit earlier if no file exists.
-	if (
-		( 'Public' === $type && ! file_exists( CODES_FOLDER_DIR . 'custom_public.js' ) && ! file_exists( CODES_FOLDER_DIR . 'custom_public_head.js' ) )
+	if ( ( 'Public' === $type && ! file_exists( CODES_FOLDER_DIR . 'custom_public.js' ) && ! file_exists( CODES_FOLDER_DIR . 'custom_public_head.js' ) )
 		|| ( 'Admin' === $type && ! file_exists( CODES_FOLDER_DIR . 'admin_panel.js' ) && ! file_exists( CODES_FOLDER_DIR . 'admin_panel_head.js' ) )
 	) {
 		return;
@@ -342,7 +336,7 @@ function codes_import_old_scripts( $type = 'Public' ) {
 	$post_ID = wp_insert_post(
 		array(
 			'post_title'  => sprintf(
-				/* translators: 1: Admin or Public 2: Language selected */
+					/* translators: 1: Admin or Public 2: Language selected */
 				__( '%1$s Side %2$s', 'custom-codes' ),
 				$type_label,
 				strtoupper( $extension )
@@ -417,7 +411,6 @@ function codes_import_old_php() {
 		$wp_filesystem->move( $old_file, $new_file );
 
 	}
-
 }
 
 /**
@@ -472,7 +465,6 @@ function codes_import_admin_notes() {
 		$wp_filesystem->put_contents( CODES_FOLDER_DIR . "$post_ID-html-head.html", $content );
 
 	}
-
 }
 
 
@@ -484,8 +476,7 @@ function codes_import_admin_notes() {
  */
 function codes_create_posts( $new_version, $old_version ) {
 
-	if (
-		! version_compare( $old_version, '2.0.0', '<' )
+	if ( ! version_compare( $old_version, '2.0.0', '<' )
 		|| count( get_posts( array( 'post_type' => 'custom-code' ) ) )
 	) {
 		return;
@@ -521,7 +512,6 @@ function codes_create_posts( $new_version, $old_version ) {
 	// Import Admin Notes.
 	codes_import_admin_notes();
 	delete_option( 'cstm_cds_admin_notes' );
-
 }
 add_action( 'codes_upgrade', 'codes_create_posts', 10, 2 );
 
@@ -590,6 +580,77 @@ function codes_import_old_settings( $new_version, $old_version ) {
 
 	// Remove the old role.
 	remove_role( 'cstm_cds_admin' );
-
 }
 add_action( 'codes_upgrade', 'codes_import_old_settings', 11, 2 );
+
+
+
+
+// FOR AFTER 2.5.0 =======================================================.
+
+/**
+ * Dismiss AI Notice
+ *
+ * @since 2.5.0
+ */
+function codes_ai_dismiss_notice() {
+	if ( isset( $_GET['codes_dismiss_ai_notice'] ) && is_admin() ) {
+		check_admin_referer( 'codes_dismiss_notice' );
+		update_option( 'codes_ai_notice_dismissed', 1 );
+		wp_safe_redirect( remove_query_arg( 'codes_dismiss_ai_notice' ) );
+		exit;
+	}
+}
+add_action( 'admin_init', 'codes_ai_dismiss_notice' );
+
+
+/**
+ * AI Feature Notice
+ *
+ * @since 2.5.0
+ */
+function codes_ai_admin_notice() {
+	if ( ( ! get_option( 'codes_ai_notice_dismissed' ) && ! get_option( '_codes_google_key' ) && ! get_option( '_codes_openai_key' ) ) || CODES_DEBUG ) {
+		?>
+		<style>
+			.ai-gradient-button {
+				display: inline-flex !important;
+				align-items: center;
+				gap: 5px;
+				background: linear-gradient(135deg, #1e3c72 0%, #2173ff 50%, #1e3c72 100%) !important;
+				background-size: 200% auto !important;
+				cursor: pointer;
+				transition: all 0.5s ease;
+				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+				color: #fff !important;
+				border: none !important;
+				padding-left: 15px !important;
+				padding-right: 20px !important;
+			}
+			.ai-gradient-button:hover {
+				background-position: right center !important;
+			}
+			.ai-gradient-button svg {
+				width: 20px;
+				height: 20px;
+			}
+		</style>
+		<div class="notice notice-info is-dismissible">
+			<p>
+				<strong><?php esc_html_e( 'New in CodeKit: AI Assistant', 'custom-codes' ); ?></strong><br>
+		<?php esc_html_e( 'Experience the power of AI in your coding workflow! Generate, optimize, and fix your code instantly with our new AI Assistant.', 'custom-codes' ); ?>
+			</p>
+			<p>
+				<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=custom-code&page=settings#ai-settings' ) ); ?>" class="button button-primary ai-gradient-button">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M12 2L14.35 8.65L21 11L14.35 13.35L12 20L9.65 13.35L3 11L9.65 8.65L12 2Z" fill="#fff" stroke="none"/>
+					</svg>
+		<?php esc_html_e( 'Start Using AI Assistant', 'custom-codes' ); ?>
+				</a>
+				<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'codes_dismiss_ai_notice', '1' ), 'codes_dismiss_notice' ) ); ?>" style="margin-left: 10px; margin-top: 5px; display: inline-block; text-decoration: none; color: #72777c;"><?php esc_html_e( 'Dismiss', 'custom-codes' ); ?></a>
+			</p>
+		</div>
+		<?php
+	}
+}
+add_action( 'admin_notices', 'codes_ai_admin_notice' );

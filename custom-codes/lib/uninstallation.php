@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * Plugin uninstallation actions.
  *
  * @since   2.0.0
@@ -11,19 +10,24 @@ defined( 'ABSPATH' ) || die( 'No script kiddies please!' );
 
 
 /**
- *
  * Folder deleter function.
  *
  * @param string $dir Directory path to delete.
  */
 function codes_delete_directory( $dir ) {
+	global $wp_filesystem;
+
+	if ( empty( $wp_filesystem ) ) {
+		include_once ABSPATH . '/wp-admin/includes/file.php';
+		WP_Filesystem();
+	}
 
 	if ( ! file_exists( $dir ) ) {
 		return true;
 	}
 
 	if ( ! is_dir( $dir ) ) {
-		return unlink( $dir );
+		return wp_delete_file( $dir );
 	}
 
 	foreach ( scandir( $dir ) as $item ) {
@@ -36,7 +40,7 @@ function codes_delete_directory( $dir ) {
 		}
 	}
 
-	return rmdir( $dir );
+	return $wp_filesystem->rmdir( $dir );
 }
 
 
@@ -72,7 +76,7 @@ function codes_fs_uninstall_cleanup() {
 		}
 
 		// DELETE THE CODES DIRECTORY.
-		codes_delete_directory( WP_CONTENT_DIR . '/custom_codes' );
+		codes_delete_directory( CODES_FOLDER_DIR );
 
 	}
 
@@ -88,6 +92,14 @@ function codes_fs_uninstall_cleanup() {
 	delete_option( '_codes_emmet' );
 	delete_option( '_codes_version' );
 	delete_option( '_codes_admin_bar' );
+	delete_option( '_codes_initial_editor' );
 
+	// DELETE AI OPTIONS.
+	delete_option( '_codes_ai_provider' );
+	delete_option( '_codes_openai_key' );
+	delete_option( '_codes_google_key' );
+	delete_option( '_codes_google_models' );
+	delete_option( '_codes_openai_models' );
+	delete_option( 'codes_ai_notice_dismissed' );
 }
 codes_fs()->add_action( 'after_uninstall', 'codes_fs_uninstall_cleanup' );

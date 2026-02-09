@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * The "Description" metabox area. (Vue JS)
  *
  * @since   2.0.0
@@ -22,7 +21,6 @@ function codes_create_description_box() {
 		'normal',
 		'core'
 	);
-
 }
 add_action( 'add_meta_boxes', 'codes_create_description_box' );
 

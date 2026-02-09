@@ -1,7 +1,6 @@
 <?php
 
 /**
- *
  * Release the codes.
  *
  * @since   2.0.0
@@ -24,7 +23,7 @@ if ( isset( $_GET['codes_safemode'] ) ) {
 /**
  * Location conditions of hooks.
  *
- * @param int    $post_ID Post ID of code.
+ * @param int    $post_ID  Post ID of code.
  * @param string $location Location of code.
  */
 function codes_location_conditions(  $post_ID, $location  ) {

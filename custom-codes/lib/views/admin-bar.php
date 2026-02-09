@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * WP Top Admin Bar view.
  *
  * @since   2.0.0
@@ -11,7 +10,6 @@ defined( 'ABSPATH' ) || die( 'No script kiddies please!' );
 
 
 /**
- *
  * Add menu items.
  *
  * @param object $wp_admin_bar Returns the WordPress Admin Bar object.
@@ -19,8 +17,7 @@ defined( 'ABSPATH' ) || die( 'No script kiddies please!' );
 function codes_wp_adminbar( $wp_admin_bar ) {
 	global $codes_posts;
 
-	if (
-		! current_user_can( 'administrator' ) // Only show for admins.
+	if ( ! current_user_can( 'manage_options' ) // Only show for admins.
 		|| ! boolval( get_option( '_codes_admin_bar' ) ) // If hidden from the settings.
 	) {
 		return;
@@ -72,6 +69,5 @@ function codes_wp_adminbar( $wp_admin_bar ) {
 			'parent' => 'codes',
 		)
 	);
-
 }
 add_action( 'admin_bar_menu', 'codes_wp_adminbar', 9999 );

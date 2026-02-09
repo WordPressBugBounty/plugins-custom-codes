@@ -16,11 +16,11 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: custom-codes
  * Domain Path: /languages
- * Version: 2.3.93
+ * Version: 2.5.0
  *
  */
 defined( 'ABSPATH' ) || die( 'No script kiddies please!' );
-define( 'CODES_VERSION', '2.3.93' );
+define( 'CODES_VERSION', '2.5.0' );
 define( 'CODES_DEBUG', false );
 // Paths.
 define( 'CODES_FILE', __FILE__ );

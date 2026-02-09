@@ -1,7 +1,6 @@
 <?php
 
 /**
- *
  * Editor saver.
  *
  * @since   2.0.0
@@ -11,8 +10,8 @@ defined( 'ABSPATH' ) || die( 'No script kiddies please!' );
 /**
  * Save the data.
  *
- * @param int    $post_ID Returns the current post ID.
- * @param object $post Returns the current post ID.
+ * @param int     $post_ID Returns the current post ID.
+ * @param WP_Post $post    Returns the current post object.
  */
 function codes_save_data(  $post_ID = false, $post = false  ) {
     global 
@@ -43,7 +42,7 @@ function codes_save_data(  $post_ID = false, $post = false  ) {
         ) );
     }
     // Administration check.
-    if ( !current_user_can( 'administrator' ) ) {
+    if ( !current_user_can( 'manage_options' ) ) {
         codes_respond( array(
             'success'        => false,
             'savedEditors'   => array(),
@@ -219,7 +218,7 @@ function codes_save_data(  $post_ID = false, $post = false  ) {
         } elseif ( isset( $editor_content ) && empty( $editor_content ) && file_exists( $file_directory ) ) {
             // Empty content editor removal.
             // Delete the file.
-            $deleted = unlink( $file_directory );
+            $deleted = wp_delete_file( $file_directory );
             if ( false === $deleted ) {
                 $errors[$editor_file_name] = __( 'File could not be deleted.', 'custom-codes' );
             } else {
@@ -232,7 +231,7 @@ function codes_save_data(  $post_ID = false, $post = false  ) {
                 $output_file_directory = CODES_FOLDER_DIR . $output_editor_file_name;
                 if ( file_exists( $output_file_directory ) ) {
                     // Delete the file.
-                    $deleted = unlink( $output_file_directory );
+                    $deleted = wp_delete_file( $output_file_directory );
                     if ( false === $deleted ) {
                         $errors[$output_editor_file_name] = __( 'File output could not be deleted.', 'custom-codes' );
                     }
@@ -242,14 +241,14 @@ function codes_save_data(  $post_ID = false, $post = false  ) {
         // COMPILE PREPARATION.
         if ( 'individual' === $language_compileable ) {
             // Compiler check.
-            $compiler_file = CODES_PLUGIN_DIR . "/lib/compilers/{$language_group}/{$language}/{$language}.php";
+            $compiler_file = CODES_PLUGIN_DIR . "/lib/compilers/{$language}.php";
             $compiler_found = file_exists( $compiler_file );
             if ( false === $compiler_found ) {
                 $errors[$editor_file_name] = __( 'No compiler found', 'custom-codes' );
             }
             if ( file_exists( $file_directory ) && $compiler_found && !empty( $editor_value ) ) {
                 // Call the function file.
-                require_once $compiler_file;
+                include_once $compiler_file;
                 // Compile.
                 $compiler_function = "codes_compile_{$language}";
                 $compile_result = $compiler_function( $editor_value );
@@ -311,14 +310,14 @@ function codes_save_data(  $post_ID = false, $post = false  ) {
             $errors[$compileable_file_name] = __( 'Output could not be written to the file.', 'custom-codes' );
         }
         // Compiler check.
-        $compiler_file = CODES_PLUGIN_DIR . "/lib/compilers/{$language_group}/{$language}/{$language}.php";
+        $compiler_file = CODES_PLUGIN_DIR . "/lib/compilers/{$language}.php";
         $compiler_found = file_exists( $compiler_file );
         if ( false === $compiler_found && 'css' !== $language_extension ) {
             $errors[$compileable_file_name] = __( 'No compiler found', 'custom-codes' );
         }
         if ( false !== $data_written && $compiler_found ) {
             // Call the function file.
-            require_once $compiler_file;
+            include_once $compiler_file;
             // Compile.
             $compiler_function = "codes_compile_{$language}";
             $compile_result = $compiler_function( $compileable );

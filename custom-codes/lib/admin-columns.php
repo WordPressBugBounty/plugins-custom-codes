@@ -1,7 +1,6 @@
 <?php
 
 /**
- *
  * Admin posts list columns
  *
  * @since   2.0.0
@@ -27,7 +26,7 @@ add_filter( 'manage_custom-code_posts_columns', 'codes_admin_columns' );
 /**
  * Column contents.
  *
- * @param string $column Returns the current column name.
+ * @param string $column  Returns the current column name.
  * @param int    $post_ID Returns the current post ID.
  */
 function codes_column_content(  $column, $post_ID  ) {
@@ -141,10 +140,10 @@ add_action( 'admin_head', 'codes_admin_columns_svg_alignment' );
  * Duplicate Quick Action Link.
  *
  * @param array  $actions Actions data.
- * @param object $post Returns the global post object.
+ * @param object $post    Returns the global post object.
  */
 function codes_duplicate_code_link(  $actions, $post  ) {
-    if ( 'custom-code' !== $post->post_type || !current_user_can( 'administrator' ) ) {
+    if ( 'custom-code' !== $post->post_type || !current_user_can( 'manage_options' ) ) {
         return $actions;
     }
     $url = wp_nonce_url( add_query_arg( array(

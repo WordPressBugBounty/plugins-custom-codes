@@ -1,7 +1,6 @@
 <?php
 
 /**
- *
  * The "Includes" metabox area. (Vue JS)
  *
  * @since   2.0.0
@@ -100,7 +99,7 @@ function codes_includes_box_html(  $post  ) {
 		</table>
 
 		<p>
-			<?php 
+	<?php 
     ?>
 				<a href="<?php 
     echo esc_url( codes_fs()->get_upgrade_url() );

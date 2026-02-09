@@ -1,6 +1,5 @@
 <?php
 /**
- *
  * Permissions check and notices.
  *
  * @since   2.0.0
