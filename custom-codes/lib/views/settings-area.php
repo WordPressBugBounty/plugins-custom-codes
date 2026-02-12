@@ -585,11 +585,11 @@ function codes_settings_page() {
     ) );
     ?>
 
-				<div class="ai-settings-wrapper <?php 
-    echo ( !$is_premium ? 'disabled-block' : '' );
-    ?>">
+				<div class="ai-settings-wrapper">
 
-					<table class="form-table ai-settings">
+					<table class="form-table ai-settings <?php 
+    echo ( !$is_premium ? 'ai-blur' : '' );
+    ?>">
 						<tr>
 							<th scope="row"><?php 
     esc_html_e( 'AI Provider', 'custom-codes' );
@@ -733,7 +733,7 @@ function codes_settings_page() {
 					<?php 
     if ( !$is_premium ) {
         ?>
-						<div class="ai-upsell-overlay">
+						<div class="ai-upsell">
 							<h3><?php 
         esc_html_e( 'AI features are available in the PRO version.', 'custom-codes' );
         ?></h3>
@@ -890,7 +890,7 @@ function codes_settings_page() {
 				$('#codes-settings-form').attr('action', 'options.php' + tabName);
 
 				// Hide submit button on PRO tab or AI tab (if upsell)
-				if ( tabName == "#pro" || (tabName == "#ai-settings" && $('.ai-upsell-overlay').length > 0) ) {
+				if ( tabName == "#pro" || (tabName == "#ai-settings" && $('.ai-upsell').length > 0) ) {
 					$('.submit').addClass('hidden');
 				} else {
 					$('.submit').removeClass('hidden');

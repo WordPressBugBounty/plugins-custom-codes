@@ -149,6 +149,10 @@ Simply install CodeKit and click the *Upgrade >* button where you can learn more
 7. Plugin settings
 
 == Changelog ==
+= 2.5.1 (2026-02-12 15:27 EET) =
+* Added: AI modal preview
+* Minor fixes and optimizations
+
 = 2.5.0 (2026-02-09 15:44 EET) =
 * Added: AI features for code generation, fix & optimization
 * Updated: VueJS updated to 2.7.16

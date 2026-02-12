@@ -392,25 +392,16 @@ function codes_editor_area() {
 						<?php 
     esc_html_e( 'Ask AI', 'custom-codes' );
     ?>
-						<select v-model="aiModel" @change="updateAiSelectWidth" v-if="aiModels && aiModels.list && aiModels.list.length > 0" class="ai-model-selector" :style="{ width: aiSelectWidth + 'px' }">
-							<option v-for="model in aiModels.list" :value="model.id">{{ model.name }}</option>
+						<select v-model="aiModel" @change="updateAiSelectWidth" v-if="(aiModels && aiModels.list && aiModels.list.length > 0) || !isPremium" class="ai-model-selector" :class="{ 'ai-blur': !isPremium }" :style="{ width: aiSelectWidth + 'px' }">
+							<option v-if="!isPremium" value="" selected>Gemini 3 Flash</option>
+							<option v-else v-for="model in aiModels.list" :value="model.id">{{ model.name }}</option>
 						</select>
 						<span ref="aiMeasurer" style="visibility: hidden; position: absolute; pointer-events: none; font-size: 12px; font-weight: 500; padding: 0 25px 0 8px;">{{ aiModelName }}</span>
 					</h3>
 					<button @click.prevent="closeAIModal" class="close-button">&times;</button>
 				</div>
 				<div class="codes-modal-body">
-					<div v-if="aiState === 'upsell'" class="ai-upsell">
-						<p><?php 
-    esc_html_e( 'AI features are available in the PRO version.', 'custom-codes' );
-    ?></p>
-						<a href="<?php 
-    echo esc_url( codes_fs()->get_upgrade_url() );
-    ?>" target="_blank" class="button button-primary ai-gradient-button"><?php 
-    esc_html_e( 'Upgrade to PRO', 'custom-codes' );
-    ?></a>
-					</div>
-					<div v-else-if="aiState === 'no-key'" class="ai-upsell">
+					<div v-if="aiState === 'no-key'" class="ai-warning">
 						<p><?php 
     esc_html_e( 'Please enter your API Key in settings to use AI features.', 'custom-codes' );
     ?></p>
@@ -420,8 +411,19 @@ function codes_editor_area() {
     esc_html_e( 'Go to Settings', 'custom-codes' );
     ?></a>
 					</div>
-					<div v-else class="ai-input-group">
-						<textarea v-model="aiPrompt" id="ai-prompt" placeholder="<?php 
+					<template v-else>
+						<div class="ai-premium-overlay" v-if="!isPremium">
+							<p><?php 
+    esc_html_e( 'AI features are available in the PRO version.', 'custom-codes' );
+    ?></p>
+							<a href="<?php 
+    echo esc_url( codes_fs()->get_upgrade_url() );
+    ?>" target="_blank" class="button button-primary ai-gradient-button"><?php 
+    esc_html_e( 'Upgrade to PRO', 'custom-codes' );
+    ?></a>
+						</div>
+						<div class="ai-input-group" :class="{ 'ai-blur': !isPremium }">
+							<textarea v-model="aiPrompt" id="ai-prompt" placeholder="<?php 
     esc_html_e( 'Describe what you want the code to do...', 'custom-codes' );
     ?>" rows="5" :disabled="aiState === 'loading'"></textarea>
 						<div class="ai-actions">
@@ -598,7 +600,7 @@ function codes_editor_area() {
 							</transition>
 						</div>
 						<div v-if="aiError" class="ai-error">{{ aiError }}</div>
-					</div>
+					</template>
 				</div>
 			</div>
 		</div>
