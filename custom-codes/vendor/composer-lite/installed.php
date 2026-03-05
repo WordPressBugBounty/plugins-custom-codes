@@ -3,7 +3,7 @@
         'name' => 'bilaltas/custom-codes',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '2ed11afc896109a89d2fdc1045e62d4daa9f1056',
+        'reference' => '6cd914c9145cda32e65b62430f6fbc16f629c340',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'bilaltas/custom-codes' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '2ed11afc896109a89d2fdc1045e62d4daa9f1056',
+            'reference' => '6cd914c9145cda32e65b62430f6fbc16f629c340',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

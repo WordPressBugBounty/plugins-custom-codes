@@ -61,6 +61,6 @@ add_filter( 'plugin_action_links', 'codes_plugins_page_link', 2, 2 );
  */
 function codes_load_plugin_textdomain() {
 
-	load_textdomain( 'custom-codes', CODES_PLUGIN_DIR . '/languages/custom-codes-' . get_locale() . '.mo' );
+	load_textdomain( 'custom-codes', CODES_PLUGIN_DIR . '/languages/custom-codes-' . get_user_locale() . '.mo' );
 }
 add_action( 'plugins_loaded', 'codes_load_plugin_textdomain' );

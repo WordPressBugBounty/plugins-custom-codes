@@ -16,11 +16,11 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: custom-codes
  * Domain Path: /languages
- * Version: 2.5.1
+ * Version: 2.5.2
  *
  */
 defined( 'ABSPATH' ) || die( 'No script kiddies please!' );
-define( 'CODES_VERSION', '2.5.1' );
+define( 'CODES_VERSION', '2.5.2' );
 define( 'CODES_DEBUG', false );
 // Paths.
 define( 'CODES_FILE', __FILE__ );
@@ -44,24 +44,25 @@ if ( function_exists( 'codes_fs' ) ) {
                 // Include Freemius SDK.
                 require_once dirname( __FILE__ ) . '/vendor/freemius/wordpress-sdk/start.php';
                 $codes_fs = fs_dynamic_init( array(
-                    'id'              => '7183',
-                    'slug'            => 'custom-codes',
-                    'premium_slug'    => 'custom-codes-pro',
-                    'type'            => 'plugin',
-                    'public_key'      => 'pk_4c4440eed53a6dd7637b96b2b82c0',
-                    'is_premium'      => false,
-                    'premium_suffix'  => 'PRO',
-                    'has_addons'      => false,
-                    'has_paid_plans'  => true,
-                    'has_affiliation' => 'selected',
-                    'menu'            => array(
+                    'id'               => '7183',
+                    'slug'             => 'custom-codes',
+                    'premium_slug'     => 'custom-codes-pro',
+                    'type'             => 'plugin',
+                    'public_key'       => 'pk_4c4440eed53a6dd7637b96b2b82c0',
+                    'is_premium'       => false,
+                    'premium_suffix'   => 'PRO',
+                    'has_addons'       => false,
+                    'has_paid_plans'   => true,
+                    'has_affiliation'  => 'selected',
+                    'menu'             => array(
                         'slug'        => 'edit.php?post_type=custom-code',
                         'first-path'  => 'edit.php?post_type=custom-code',
                         'contact'     => false,
                         'support'     => false,
                         'affiliation' => false,
                     ),
-                    'is_live'         => true,
+                    'is_live'          => true,
+                    'is_org_compliant' => true,
                 ) );
             }
             return $codes_fs;

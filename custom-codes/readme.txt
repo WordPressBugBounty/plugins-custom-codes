@@ -149,6 +149,10 @@ Simply install CodeKit and click the *Upgrade >* button where you can learn more
 7. Plugin settings
 
 == Changelog ==
+= 2.5.2 (2026-03-05 16:239 EET) =
+* Bug fix related to user localization preference
+* Unused assets removed and old icon updated
+
 = 2.5.1 (2026-02-12 15:27 EET) =
 * Added: AI modal preview
 * Minor fixes and optimizations
@@ -477,6 +481,9 @@ Simply install CodeKit and click the *Upgrade >* button where you can learn more
 * Initial commit
 
 == Upgrade Notice ==
+
+= 2.5.0 =
+CodeKit now has AI superpowers! Generate, fix, and optimize your custom codes with Google Gemini or OpenAI.
 
 = 2.0.0 =
 This is a major upgrade. Please backup both files and database before updating.
