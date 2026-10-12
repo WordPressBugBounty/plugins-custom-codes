@@ -149,7 +149,10 @@ Simply install CodeKit and click the *Upgrade >* button where you can learn more
 7. Plugin settings
 
 == Changelog ==
-= 2.5.2 (2026-03-05 16:239 EET) =
+= 2.5.3 (2026-10-12 15:20 EET) =
+* Updated Freemius SDK to the latest version
+
+= 2.5.2 (2026-03-05 16:23 EET) =
 * Bug fix related to user localization preference
 * Unused assets removed and old icon updated
 
